@@ -1,6 +1,6 @@
 module.exports = (robot) ->
-  robot.respond /(talk|tk)( me)? (.*)/i, (msg) ->
-    query = msg.match[3]
+  robot.respond /(\S+)/i, (msg) ->
+    query = msg.match[1]
     user_name = msg.message.user.name
     API_KEY = process.env.HUBOT_DOCOMO_DIALOGUE_API_KEY
     url = "https://api.apigw.smt.docomo.ne.jp/dialogue/v1/dialogue?APIKEY=#{API_KEY}"
