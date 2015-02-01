@@ -12,8 +12,9 @@ module.exports = (robot) ->
       nickname: user_name if user_name
       context: context if context
     })) (err, response, body) ->
-      robot.brain.set KEY_DOCOMO_CONTEXT, JSON.parse(body).context
+      res = JSON.parse(body)
+      robot.brain.set KEY_DOCOMO_CONTEXT, res.context
       if err?
         msg.send "Encountered an error #{err}"
       else
-        msg.send JSON.parse(body).utt
+        msg.send res.utt
