@@ -9,5 +9,7 @@ module.exports = (robot) ->
       if err?
         msg.send "Encountered an error #{err}"
       else
+        str = ''
         for key,val of res.articleContents
-          msg.send val.contentData.title, val.contentData.linkUrl
+          str += "#{val.contentData.title}, #{val.contentData.linkUrl}\n"
+        msg.send str
