@@ -21,9 +21,6 @@ module.exports = (robot) ->
 
   robot.respond /(news) (list) (.*)/i, (msg) ->
     genre_id = msg.match[3]
-    unless genre_id
-      msg.send "Usage: \n news genre: getting genreId \n news list genreId: getting news of the genre"
-      return 
     url = "https://api.apigw.smt.docomo.ne.jp/webCuration/v3/contents?APIKEY=#{API_KEY}&genreId=#{genre_id}&lang=ja"
 
     robot.http(url).get() (err, response, body) ->
